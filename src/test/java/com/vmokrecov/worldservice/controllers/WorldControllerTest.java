@@ -13,6 +13,19 @@ class WorldControllerTest {
     private WebTestClient client;
 
     @Test
+    void home() {
+        this.client
+                .get()
+                .uri("/")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .exchange()
+                .expectStatus().isOk()
+                .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+                .expectBody()
+                .jsonPath("message", "Home");
+    }
+
+    @Test
     void world() {
         this.client
                 .get()
