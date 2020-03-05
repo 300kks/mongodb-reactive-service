@@ -22,12 +22,12 @@ jobs:
       with:
        name: world-service.jar
        path: target/
- 
+
   deploy:
-  
+
     needs: [build]
     runs-on: ubuntu-latest
-    
+
     steps:
     - uses: actions/checkout@v2
     - uses: actions/download-artifact@v1
@@ -41,3 +41,21 @@ jobs:
         username: ${{secrets.GITHUB_PKG_REGISTRY_USERNAME}}
         password: ${{secrets.GITHUB_PKG_REGISTRY_PASSWORD}}
         registry: docker.pkg.github.com
+
+  delivery:
+
+    needs: [deploy]
+    runs-on: 'ubuntu-latest'
+
+    steps:
+      - uses: 'actions/checkout@v1'
+      - name: 'Deploy'
+        uses: 'deliverybot/helm@v1'
+        with:
+          helm: 'helm3'
+          release: 'worldservice'
+          namespace: 'default'
+          chart: 'chart/worldservice'
+          token: '${{ github.token }}'
+        env:
+          KUBECONFIG_FILE: '${{ secrets.KUBECONFIG }}'
