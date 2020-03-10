@@ -22,7 +22,7 @@ class WorldControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
                 .expectBody()
-                .jsonPath("message", "Home");
+                .jsonPath("$.message").isEqualTo("Home");
     }
 
     @Test
@@ -35,6 +35,6 @@ class WorldControllerTest {
                 .expectStatus().isOk()
                 .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
                 .expectBody()
-                .jsonPath("message").isEqualTo("world");
+                .jsonPath("message").isEqualTo("World");
     }
 }

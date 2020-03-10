@@ -14,6 +14,6 @@ public class WorldController {
 
     @GetMapping("world")
     public Mono<String> world() {
-        return Mono.just("{ \"message\": \"world\" }");
+        return Mono.just("{ \"message\": \"World\" }");
     }
 }
