@@ -1,0 +1,82 @@
+---
+# Source: worldservice/templates/serviceaccount.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: worldservice
+  labels:
+    helm.sh/chart: worldservice-0.1.0
+    app.kubernetes.io/name: worldservice
+    app.kubernetes.io/instance: worldservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+---
+# Source: worldservice/templates/service.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: worldservice
+  labels:
+    helm.sh/chart: worldservice-0.1.0
+    app.kubernetes.io/name: worldservice
+    app.kubernetes.io/instance: worldservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  type: LoadBalancer
+  ports:
+    - port: 8082
+      targetPort: 8080
+      protocol: TCP
+      name: nginx
+  selector:
+    app.kubernetes.io/name: worldservice
+    app.kubernetes.io/instance: worldservice
+---
+# Source: worldservice/templates/deployment.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: worldservice
+  labels:
+    helm.sh/chart: worldservice-0.1.0
+    app.kubernetes.io/name: worldservice
+    app.kubernetes.io/instance: worldservice
+    app.kubernetes.io/version: "1.16.0"
+    app.kubernetes.io/managed-by: Helm
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: worldservice
+      app.kubernetes.io/instance: worldservice
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: worldservice
+        app.kubernetes.io/instance: worldservice
+    spec:
+      serviceAccountName: worldservice
+      securityContext:
+        {}
+      containers:
+        - name: worldservice
+          securityContext:
+            {}
+          image: "vmokrecov/world-service:1.16.0"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+          resources:
+            {}
+
