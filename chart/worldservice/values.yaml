@@ -5,10 +5,12 @@
 replicaCount: 1
 
 image:
-  repository: "vmokrecov/world-service"
+  repository: "docker.pkg.github.com/300kks/worldservice/worldservice"
   pullPolicy: IfNotPresent
 
-imagePullSecrets: []
+imagePullSecrets:
+  - name: regcred
+
 nameOverride: ""
 fullnameOverride: ""
 
