@@ -47,6 +47,8 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 Selector labels
 */}}
 {{- define "worldservice.selectorLabels" -}}
+app: worldservice
+version: v1
 app.kubernetes.io/name: {{ include "worldservice.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end -}}
