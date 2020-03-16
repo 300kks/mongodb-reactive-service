@@ -36,7 +36,7 @@ securityContext: {}
 
 service:
   name: nginx
-  type: LoadBalancer
+  type: ClusterIP
   externalPort: 8082
   internalPort: 8080
 
