@@ -39,6 +39,8 @@ service:
   type: ClusterIP
   externalPort: 8082
   internalPort: 8080
+  livenessProbe: actuator/health
+  readinessProbe: actuator/health
 
 ingress:
   enabled: false
