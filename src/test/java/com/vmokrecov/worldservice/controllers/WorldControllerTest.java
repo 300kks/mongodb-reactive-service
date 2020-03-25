@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.reactive.WebFluxTest;
 import org.springframework.http.MediaType;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.web.reactive.server.WebTestClient;
 
 @WebFluxTest(WorldController.class)
@@ -13,6 +14,7 @@ class WorldControllerTest {
     private WebTestClient client;
 
     @Test
+    @WithMockUser(roles = "USER")
     void home() {
         this.client
                 .get()
@@ -26,6 +28,7 @@ class WorldControllerTest {
     }
 
     @Test
+    @WithMockUser(roles = "USER")
     void world() {
         this.client
                 .get()
