@@ -1,6 +1,11 @@
 spring:
   application:
     name: worldservice
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          public-key-location: classpath:public.cert
 
 opentracing:
   jaeger:
