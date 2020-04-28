@@ -18,6 +18,11 @@ public class ResourceServerConfiguration {
                 .csrf().disable()
                 .authorizeExchange()
                 .pathMatchers("/actuator/health").permitAll()
+                .pathMatchers(
+                        "/v2/api-docs",
+                        "/swagger-resources/**",
+                        "/swagger-ui.html",
+                        "/webjars/**", "/csrf").permitAll()
                 .pathMatchers("/**").authenticated()
                 .anyExchange().authenticated()
                 .and()
