@@ -8,7 +8,7 @@ spring:
           public-key-location: classpath:public.cert
   data:
     mongodb:
-      uri: mongodb://world:world@localhost:27017/worldservice
+      uri: mongodb://world:world@mongodb:27017/worldservice
 
 opentracing:
   jaeger:
