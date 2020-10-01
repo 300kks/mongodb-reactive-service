@@ -15,5 +15,4 @@ Microservice contains:
 - Distributed trace support (Jaeger)
 - Spring security
 - Actuator
-- Flyway
 - Swagger
