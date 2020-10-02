@@ -5,7 +5,7 @@
 replicaCount: 1
 
 image:
-  repository: "docker.pkg.github.com/300kks/worldservice/worldservice"
+  repository: "docker.pkg.github.com/300kks/mongodb-reactive-service/worldservice"
   pullPolicy: IfNotPresent
 
 imagePullSecrets:
