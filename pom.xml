@@ -16,7 +16,7 @@
 
     <properties>
         <java.version>1.8</java.version>
-        <spring-cloud.version>Hoxton.SR3</spring-cloud.version>
+        <spring-cloud.version>2021.0.5</spring-cloud.version>
         <opentracing-spring-jaeger.version>3.3.1</opentracing-spring-jaeger.version>
         <springfox.version>3.0.0</springfox.version>
     </properties>
