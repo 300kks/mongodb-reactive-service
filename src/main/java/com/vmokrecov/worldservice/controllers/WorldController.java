@@ -2,7 +2,7 @@ package com.vmokrecov.worldservice.controllers;
 
 import com.vmokrecov.worldservice.dto.MessagesDTO;
 import com.vmokrecov.worldservice.services.MessagesService;
-import io.swagger.annotations.Api;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,7 +14,7 @@ import reactor.core.publisher.Mono;
 
 @RestController
 @AllArgsConstructor
-@Api(tags = "WorldController admin", description = "WorldController description")
+@Tag(name = "WorldController admin", description = "WorldController description")
 public class WorldController {
 
     private final MessagesService serivce;

@@ -21,7 +21,9 @@ public class ResourceServerConfiguration {
                 .pathMatchers(
                         "/v2/api-docs",
                         "/swagger-resources/**",
+                        "/swagger-ui/**",
                         "/swagger-ui.html",
+                        "/v3/api-docs/**",
                         "/webjars/**", "/csrf").permitAll()
                 .pathMatchers("/**").authenticated()
                 .anyExchange().authenticated()
