@@ -19,6 +19,7 @@
         <spring-cloud.version>2021.0.5</spring-cloud.version>
         <opentracing-spring-jaeger.version>3.3.1</opentracing-spring-jaeger.version>
         <springfox.version>3.0.0</springfox.version>
+        <springdoc-openapi-webflux-ui.version>1.6.12</springdoc-openapi-webflux-ui.version>
     </properties>
 
     <dependencies>
@@ -58,7 +59,7 @@
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webflux-ui</artifactId>
-            <version>1.6.12</version>
+            <version>${springdoc-openapi-webflux-ui.version}</version>
         </dependency>
 
         <dependency>
